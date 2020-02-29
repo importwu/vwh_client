@@ -1,11 +1,9 @@
 {
     "name": "vwh_client",
-    "main": "main.js",
+    "main": "./main.prod.js",
     "version": "1.0.0",
     "description": "visual warehouse client",
     "author": "importwu",
     "license": "ISC",
-    "dependencies": {
-
-    }
+    "dependencies": {}
 }

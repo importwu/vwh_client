@@ -8,27 +8,13 @@ module.exports = (env) => ({
     mode: `${env}`,
     target: 'electron-renderer',
     entry: {
-        renderer: ['react'],
+        vendors: Object.keys(dependencies || {}),
     },
     output: {
         filename: '[name].dll.js',
         path: out,
         library: '[name]_dll',
         libraryTarget: 'var'
-    },
-    module: {
-        rules: [
-            {
-                test: /\.(js|jsx)$/,
-                exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ['@babel/preset-env', '@babel/preset-react'],
-                    }
-                }
-            }
-        ]
     },
     plugins: [
         new webpack.DllPlugin({

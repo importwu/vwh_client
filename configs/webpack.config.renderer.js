@@ -1,7 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const {dependencies} = require('../package.json')
 
 const out = path.resolve(__dirname, '..', 'app', 'dist')
 const index = path.resolve(__dirname, '..', 'src', 'renderer', 'index.jsx')
@@ -13,9 +12,8 @@ module.exports = (env) => ({
     target: 'electron-renderer',
     output: {
         path: out,
-        filename: 'index.bundle.js'
+        filename: `index.${env === 'development' ? 'dev' : 'prod'}.js`
     },
-    // externals: ['react', 'react-dom', 'styled-components'],
     resolve: {
         extensions: ['.js', '.jsx'],
         alias: {
@@ -26,22 +24,26 @@ module.exports = (env) => ({
     module: {
         rules: [
             {
-                test: /\.js$/,
+                test: /\.(js|jsx)$/,
+                exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env', '@babel/preset-react'],
+                    }
                 }
             }
         ]
     },
     plugins: [
         new webpack.DllReferencePlugin({
-            manifest: require('../app/dll/renderer.manifest.json'),
+            manifest: require('../app/dll/vendors.manifest.json'),
             sourceType: 'var',
             context: __dirname,
-            name: 'renderer_dll'
         }),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, '..', 'src', 'renderer', 'index.html'),
+            filename: `index.${env === 'development' ? 'dev' : 'prod'}.html`
         })
     ]
 })
