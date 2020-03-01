@@ -45,5 +45,7 @@ module.exports = (env) => ({
             template: path.resolve(__dirname, '..', 'src', 'renderer', 'index.html'),
             filename: `index.${env === 'development' ? 'dev' : 'prod'}.html`
         })
-    ]
+    ],
+    devServer: {
+    }
 })

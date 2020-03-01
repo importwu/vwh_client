@@ -1,5 +1,5 @@
 
 import React from 'react'
-import path from 'path'
+// import path from 'path'
 
-console.log(path)
+console.log(React)

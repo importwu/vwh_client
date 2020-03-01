@@ -4,3 +4,4 @@ app/dist/**
 app/dll/**
 app/main.dev.js
 app/main.prod.js
+build/**

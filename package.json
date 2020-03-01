@@ -7,6 +7,13 @@
   },
   "author": "importwu",
   "license": "ISC",
+  "build": {
+    "productName": "vmh",
+    "appId": "fl.importwu",
+    "directories": {
+      "output": "build"
+    }
+  },
   "devDependencies": {
     "@babel/core": "^7.8.6",
     "@babel/preset-env": "^7.8.6",
@@ -16,7 +23,8 @@
     "gulp": "^4.0.2",
     "html-webpack-plugin": "^3.2.0",
     "minimist": "^1.2.0",
-    "webpack": "^4.41.6"
+    "webpack": "^4.41.6",
+    "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
     "react": "^16.13.0",
