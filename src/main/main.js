@@ -12,7 +12,6 @@ function createWindow () {
       }
     })
     win.loadFile(path.resolve(__dirname, 'dist', `index.${process.env.NODE_ENV === 'development' ? 'dev' : 'prod'}.html`))
-    // win.loadURL('http://127.0.0.1:8080')
   }
   
 app.whenReady().then(createWindow)

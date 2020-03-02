@@ -17,8 +17,8 @@ module.exports = (env) => ({
     resolve: {
         extensions: ['.js', '.jsx'],
         alias: {
-            '@components': path.join(src, 'components'),
-            '@pages': path.join(src, 'pages')
+            '@components': path.resolve(src, 'components'),
+            '@pages': path.resolve(src, 'pages')
         }
     },
     module: {
@@ -45,7 +45,8 @@ module.exports = (env) => ({
             template: path.resolve(__dirname, '..', 'src', 'renderer', 'index.html'),
             filename: `index.${env === 'development' ? 'dev' : 'prod'}.html`
         })
-    ],
-    devServer: {
-    }
+    ]
+  
 })
+
+
